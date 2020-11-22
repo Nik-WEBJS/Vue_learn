@@ -3,6 +3,7 @@
    <h1>to do application</h1>
    <TodoList 
    v-bind:todos="todos"
+   @remove-todo="removeTodo"
    />
   </div>
 </template>
@@ -14,10 +15,15 @@ export default {
   data() {
     return {
       todos: [
-        {id: 1, title: 'купить хлеб', compiled: false},
-        {id: 1, title: 'купить масло', compiled: false},
-        {id: 1, title: 'купить варенье', compiled: false}
+        {id: 1, title: 'купить хлеб', completed: false},
+        {id: 2, title: 'купить масло', completed: false},
+        {id: 3, title: 'купить варенье', completed: false}
       ]
+    }
+  },
+  methods:{
+    removeTodo(id){
+      this.todos = this.todos.filter(t => t.id !== id)
     }
   },
   components: {
